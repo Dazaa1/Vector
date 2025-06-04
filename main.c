@@ -33,7 +33,7 @@ void pop(Vector* vector) {
 
 void shift(Vector* vector) {
     assert(vector->length >0 && "vector length should be higher than 0 to pop");
-    memmove(vector->value[0], vector->value[1], vector->capacity * sizeof(vector->value[0]));
+    memmove(&vector->value[0], &vector->value[1], vector->capacity * sizeof(vector->value[0]));
     vector->length--;
 }
 
@@ -44,8 +44,12 @@ int main() {
         append(&vector, i);
     }
     // poping three times
-    for (int32_t i = 0; i < 3; i++) {
+    for (int32_t i = 0; i < 2; i++) {
         pop(&vector);
+    }
+
+    for (int32_t i = 0; i < 2; i++) {
+        shift(&vector);
     }
 
 
