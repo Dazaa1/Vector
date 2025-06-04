@@ -3,9 +3,9 @@
 #include <stdlib.h>
 
 typedef struct {
-    int *value;
-    int32_t capacity;
-    int32_t length;
+    int32_t *value;
+    size_t capacity;
+    size_t length;
 } Vector;
 
 // a function that help append new elements
