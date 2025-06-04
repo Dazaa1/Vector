@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 
 typedef struct {
     int32_t *value;
@@ -28,6 +29,12 @@ void append(Vector* vector, int32_t value) {
 void pop(Vector* vector) {
     assert(vector->length >0 && "vector length should be higher than 0 to pop");
     vector->value[vector->length--] = 0;
+}
+
+void shift(Vector* vector) {
+    assert(vector->length >0 && "vector length should be higher than 0 to pop");
+    memmove(vector->value[0], vector->value[1], vector->capacity * sizeof(vector->value[0]));
+    vector->length--;
 }
 
 int main() {
